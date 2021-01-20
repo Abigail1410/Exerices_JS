@@ -37,12 +37,11 @@ For example: 5! = 1 * 2 * 3 * 4 * 5 = 120
 Only integers greater than or equal to zero will be supplied to the function.
 
 
-unction factorialize(num) {
-  let total = 1
-  for (let i = 1; i <= num; i++) {
-    total *= i
+function factorialize(num) {
+  for (var product = 1; num > 0; num--) {
+    product *= num;
   }
-  return total;
+  return product;
 }
 
 factorialize(5);
