@@ -45,3 +45,28 @@ function factorialize(num) {
 }
 
 factorialize(5);
+
+-----------------------------------------------------
+
+
+Return the length of the longest word in the provided sentence.
+
+Your response should be a number.
+
+
+function findLongestWord(str) {
+
+  var charArray = str.split(" ");
+  var wordArray = [];
+
+
+  for(var i = 0; i < charArray.length; i++ ) {
+    wordArray.push(charArray[i].length);
+    wordArray.sort();
+    wordArray.reverse();
+
+  }
+
+  return wordArray[0];
+}
+---------------------------------------------------------
