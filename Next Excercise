@@ -1,0 +1,268 @@
+# Exerices_JS
+This exercises was made by MIcroverse 
+Create a function that looks through an array arr and returns the first element in it that passes a 'truth test'. 
+This means that given an element x, the 'truth test' is passed if func(x) is true. If no element passes the test, return undefined.
+
+function findElement(arr, func) {
+  let num = 0;
+
+  for (var i = 0; i < arr.length; i++) {
+    num = arr[i];
+    if (func(num)) {
+      return num;
+    }
+  }
+
+  return undefined;
+}
+-------------------------------------------------------------------------------
+Check if a value is classified as a boolean primitive. Return true or false.
+
+Boolean primitives are true and false.
+
+function booWho(bool) {
+  return typeof bool === "boolean";
+}
+
+// test here
+booWho(null);
+----------------------------------------------------------------------------------------
+
+
+
+Return the provided string with the first letter of each word capitalized. Make sure the rest of the word is in lower case.
+
+For the purpose of this exercise, you should also capitalize connecting words like "the" and "of".
+
+String.prototype.replaceAt = function(index, character) {
+  return (
+    this.substr(0, index) + character + this.substr(index + character.length)
+  );
+};
+
+function titleCase(str) {
+  var newTitle = str.split(" ");
+  var updatedTitle = [];
+  for (var st in newTitle) {
+    updatedTitle[st] = newTitle[st]
+      .toLowerCase()
+      .replaceAt(0, newTitle[st].charAt(0).toUpperCase());
+  }
+  return updatedTitle.join(" ");
+}
+----------------------------------------------------------------------------------------
+You are given two arrays and an index.
+
+Copy each element of the first array into the second array, in order.
+
+Begin inserting elements at index n of the second array.
+
+Return the resulting array. The input arrays should remain the same after the function runs.
+ function frankenSplice(arr1, arr2, n) {
+  // It's alive. It's alive!
+  let localArray = arr2.slice();
+  for (let i = 0; i < arr1.length; i++) {
+    localArray.splice(n, 0, arr1[i]);
+    n++;
+  }
+  return localArray;
+}
+---------------------------------------------------------------------------------------------
+
+
+Remove all falsy values from an array.
+
+Falsy values in JavaScript are false, null, 0, "", undefined, and NaN.
+
+Hint: Try converting each value to a Boolean.
+
+function bouncer(arr) {
+  let newArray = [];
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i]) newArray.push(arr[i]);
+  }
+  return newArray;
+}
+--------------------------------------------------------------------------------------------
+
+Return the lowest index at which a value (second argument) should be inserted into an array (first argument) once it has been sorted. The returned value should be a number.
+
+For example, getIndexToIns([1,2,3,4], 1.5) should return 1 because it is greater than 1 (index 0), but less than 2 (index 1).
+
+Likewise, getIndexToIns([20,3,5], 19) should return 2 because once the array has been sorted it will look like [3,5,20] and 19 is less than 20 (index 2) and greater than 5 (index 1).
+
+function getIndexToIns(arr, num) {
+  arr.sort(function(a, b) {
+    return a - b;
+  });
+
+  for (var a = 0; a < arr.length; a++) {
+    if (arr[a] >= num) return a;
+  }
+
+  return arr.length;
+}
+----------------------------------------------------------------------------------------
+
+
+Return true if the string in the first element of the array contains all of the letters of the string in the second element of the array.
+
+For example, ["hello", "Hello"], should return true because all of the letters in the second string are present in the first, ignoring case.
+
+The arguments ["hello", "hey"] should return false because the string "hello" does not contain a "y".
+
+Lastly, ["Alien", "line"], should return true because all of the letters in "line" are present in "Alien".
+
+function mutation(arr) {
+  var test = arr[1].toLowerCase();
+  var target = arr[0].toLowerCase();
+  for (var i = 0; i < test.length; i++) {
+    if (target.indexOf(test[i]) < 0) return false;
+  }
+  return true;
+}
+-------------------------------------------------------------------------
+Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a two-dimensional array.
+function chunkArrayInGroups(arr, size) {
+  var temp = [];
+  var result = [];
+
+  for (var a = 0; a < arr.length; a++) {
+    if (a % size !== size - 1) temp.push(arr[a]);
+    else {
+      temp.push(arr[a]);
+      result.push(temp);
+      temp = [];
+    }
+  }
+
+  if (temp.length !== 0) result.push(temp);
+  return result;
+}
+---------------------------------------------------------
+Object Oriented Programming: Use Dot Notation to Access the Properties of an Object
+
+
+example, all cars have wheels, but not all cars have the same number of wheels.
+
+Objects in JavaScript are used to model real-world objects, giving them properties and behavior just like their real-world counterparts. Here's an example using these concepts to create a duck object:
+
+let duck = {
+  name: "Aflac",
+  numLegs: 2
+};
+
+let dog = {
+  name: "George",
+  numLegs: 4
+};
+
+----------------------------------------------------
+
+
+The last challenge created an object with various properties. Now you'll see how to access the values of those properties. Here's an example:
+
+let duck = {
+  name: "Aflac",
+  numLegs: 2
+};
+console.log(duck.name);
+// This prints "Aflac" to the console
+
+Dot notation is used on the object name, duck, followed by the name of the property, name, to access the value of "Aflac".
+
+Print both properties of the dog object to your console.
+
+let dog = {
+  name: "Spot",
+  numLegs: 4
+};
+// Add your code below this line
+console.log(dog.name);
+console.log(dog.numLegs);
+-----------------------------------------------------
+
+Objects can have a special type of property, called a method.
+
+Methods are properties that are functions. This adds different behavior to an object. Here is the duck example with a method:
+
+let duck = {
+  name: "Aflac",
+  numLegs: 2,
+  sayName: function() {return "The name of this duck is " + duck.name + ".";}
+};
+duck.sayName();
+// Returns "The name of this duck is Aflac."
+ --
+ 
+ let dog = {
+  name: "Spot",
+  numLegs: 4,
+  sayLegs: function() {
+    return "This dog has " + dog.numLegs + " legs.";
+  }
+};
+
+dog.sayLegs();
+----------------------------------------------------------------
+The last challenge introduced a method to the duck object. It used duck.name dot notation to access the value for the name property within the return statement:
+
+sayName: function() {return "The name of this duck is " + duck.name + ".";}
+
+While this is a valid way to access the object's property, there is a pitfall here. If the variable name changes, any code referencing the original name would need to be updated as well. In a short object definition, it isn't a problem, but if an object has many references to its properties there is a greater chance for error.
+
+A way to avoid these issues is with the this keyword:
+
+let duck = {
+  name: "Aflac",
+  numLegs: 2,
+  sayName: function() {return "The name of this duck is " + this.name + ".";}
+};
+--
+let dog = {
+  name: "Spot",
+  numLegs: 4,
+  sayLegs: function() {
+    return "This dog has " + this.numLegs + " legs.";
+  }
+};
+
+dog.sayLegs();
+--------------------------
+
+
+Constructors are functions that create new objects. They define properties and behaviors that will belong to the new object. Think of them as a blueprint for the creation of new objects.
+
+Here is an example of a constructor:
+
+function Bird() {
+  this.name = "Albert";
+  this.color = "blue";
+  this.numLegs = 2;
+}
+
+This constructor defines a Bird object with properties name, color, and numLegs set to Albert, blue, and 2, respectively. Constructors follow a few conventions:
+
+    Constructors are defined with a capitalized name to distinguish them from other functions that are not constructors.
+    Constructors use the keyword this to set properties of the object they will create. Inside the constructor, this refers to the new object it will create.
+    Constructors define properties and behaviors instead of returning a value as other functions might.
+
+Create a constructor, Dog, with properties name, color, and numLegs that are set to a string, a string, and a number, respectively.
+
+--
+function Dog() {
+  (this.name = "Geogre"), (this.color = "White"), (this.numLegs = 4);
+}
+
+----------------------
+
+
+
+
+
+
+
+
+
+
+
